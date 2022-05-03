@@ -1,0 +1,29 @@
+# Config file for automatic testing at travis-ci.org
+language: python
+
+matrix:
+  include:
+    # - python: 2.7
+    - python: 3.5
+    - python: 3.6
+    - python: 3.7
+      dist: xenial
+      sudo: true
+
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install:
+  - python -m pip install -U pip
+  - python -m pip install -U setuptools
+  # Prepare test utility
+  - python -m pip install click
+
+# command to run tests, e.g. python setup.py test
+script:
+  - |
+    # Only run mypy and flake8 check with python 3.7
+    if [ "${TRAVIS_PYTHON_VERSION}" == "3.7" ] ; then
+      python ./ci/executor.py test -e mypy -e flake8
+    fi
+  - python ./ci/executor.py test
+
+
