@@ -36,7 +36,7 @@ def test(env):
     envs = env
     for env in envs:
         if env == 'default':
-            run_module("pip install -r./requirements_dev.txt")
+            run_module("pip install -r./requirements-dev.txt")
             run_module("pip install -r./requirements.txt")
             run_path("setup.py test")
         elif env == 'mypy':
