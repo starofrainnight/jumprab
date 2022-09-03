@@ -3,14 +3,23 @@
 
 """Console script for jumprab."""
 
+import yaml
 import click
 
+import jumprab
+from .jumprab import JumpRab
+
+
 @click.command()
-def main(args=None):
-    """Console script for jumprab."""
-    click.echo("Replace this message by putting your code into "
-               "jumprab.__main__.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
+@click.option("-c", "--config")
+def main(config):
+    """JumpRab, a developer's mirrors & proxies batch settings program."""
+    with open(config, "r") as f:
+        cfg = yaml.load(f, yaml.FullLoader)
+
+    # Parse the pip settings
+    jumprab = JumpRab(cfg)
+    jumprab.run()
 
 
 if __name__ == "__main__":
