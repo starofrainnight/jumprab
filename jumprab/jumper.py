@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from typing import Dict, Any
+from typing import Dict
 
 
 class Jumper(object):

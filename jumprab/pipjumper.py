@@ -40,14 +40,12 @@ class PipJumper(Jumper):
         main_url = urls[0]
         extra_urls = urls[1:]
 
-        subprocess.run(
-            ["pip", "config", "-qqq", "set", "global.index-url", main_url]
-        )
+        cmds = ["pip", "config", "--global", "-qqq"]
+
+        subprocess.run([*cmds, "set", "global.index-url", main_url])
         subprocess.run(
             [
-                "pip",
-                "config",
-                "-qqq",
+                *cmds,
                 "set",
                 "global.trusted-host",
                 "\n".join(hostnames),
@@ -57,9 +55,7 @@ class PipJumper(Jumper):
         if extra_urls:
             subprocess.run(
                 [
-                    "pip",
-                    "config",
-                    "-qqq",
+                    *cmds,
                     "set",
                     "global.extra-index-url",
                     "\n".join(extra_urls),
@@ -67,6 +63,4 @@ class PipJumper(Jumper):
             )
         else:
             # Keep quiet to unset that option
-            subprocess.run(
-                ["pip", "config", "-qqq", "unset", "global.extra-index-url"]
-            )
+            subprocess.run([*cmds, "unset", "global.extra-index-url"])

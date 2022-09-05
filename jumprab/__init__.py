@@ -7,7 +7,9 @@ __email__ = "sorn@taorules.com"
 __version__ = "0.0.1"
 
 from .pipjumper import PipJumper
+from .flatpakjumper import FlatpakJumper
 
 jumpers = {
     PipJumper.TAG: PipJumper,
+    FlatpakJumper.TAG: FlatpakJumper,
 }
