@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+import sys
 import subprocess
 from typing import List, Dict
 from urllib.parse import urlparse
@@ -40,7 +41,15 @@ class PipJumper(Jumper):
         main_url = urls[0]
         extra_urls = urls[1:]
 
-        cmds = ["pip", "config", "--global", "-qqq"]
+        cmds = [
+            "sudo",
+            sys.executable,
+            "-m",
+            "pip",
+            "config",
+            "--global",
+            "-qqq",
+        ]
 
         subprocess.run([*cmds, "set", "global.index-url", main_url])
         subprocess.run(

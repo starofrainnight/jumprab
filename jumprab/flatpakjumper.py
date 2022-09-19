@@ -25,6 +25,7 @@ class FlatpakJumper(Jumper):
         for name, url in remotes.items():
             subprocess.run(
                 [
+                    "sudo",
                     "flatpak",
                     "remote-add",
                     "--if-not-exists",
@@ -34,5 +35,5 @@ class FlatpakJumper(Jumper):
             )
 
             subprocess.run(
-                ["flatpak", "remote-modify", name, "--url=%s" % url]
+                ["sudo", "flatpak", "remote-modify", name, "--url=%s" % url]
             )

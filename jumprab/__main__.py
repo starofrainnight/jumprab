@@ -11,7 +11,7 @@ from .jumprab import JumpRab
 
 
 @click.command()
-@click.option("-c", "--config")
+@click.option("-c", "--config", required=True)
 def main(config):
     """JumpRab, a developer's mirrors & proxies batch settings program."""
     with open(config, "r") as f:
