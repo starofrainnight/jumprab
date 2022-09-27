@@ -12,8 +12,18 @@ from .flatpakjumper import FlatpakJumper
 from .dockerjumper import DockerJumper
 
 jumpers = {
-    PipJumper.TAG: PipJumper,
-    FlatpakJumper.TAG: FlatpakJumper,
-    FlutterJumper.TAG: FlutterJumper,
-    DockerJumper.TAG: DockerJumper,
+    PipJumper,
+    FlatpakJumper,
+    FlutterJumper,
+    DockerJumper,
 }
+
+def get_jumper_map():
+    """Get jumper map for it's TAG"""
+    # type: () -> Dict[str]
+    jumper_map = dict()
+
+    for it in jumpers:
+        jumper_map[it.TAG] = it
+
+    return jumper_map
