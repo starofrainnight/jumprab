@@ -5,8 +5,6 @@
 
 import yaml
 import click
-
-import jumprab
 from .jumprab import JumpRab
 
 
