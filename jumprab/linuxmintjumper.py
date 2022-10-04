@@ -6,6 +6,7 @@ import os.path
 from typing import List, Dict
 from urllib.parse import urlparse
 from .jumper import Jumper
+from .linuxubuntujumper import LinuxUbuntuJumper
 
 
 class LinuxMintJumper(Jumper):
@@ -35,7 +36,7 @@ class LinuxMintJumper(Jumper):
             return
 
         try:
-            ubuntu_url = self._cfg["linux-ubuntu"]["url"]
+            ubuntu_url = self._cfg[LinuxUbuntuJumper.TAG]["url"]
         except KeyError:
             click.echo("No 'linux-ubuntu/url' item found!")
             return
