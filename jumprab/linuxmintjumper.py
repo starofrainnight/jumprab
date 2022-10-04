@@ -86,6 +86,10 @@ class LinuxMintJumper(Jumper):
         with open(pkg_source_list_fpath, "w") as f:
             f.write(pkg_source_list)
 
+        click.echo("Updated %s" % pkg_source_list_fpath)
+
         if os.path.exists(src_source_list_fpath):
             with open(src_source_list_fpath, "w") as f:
                 f.write(src_source_list)
+
+        click.echo("Updated %s" % src_source_list_fpath)
