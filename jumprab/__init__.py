@@ -10,12 +10,14 @@ from .flutterjumper import FlutterJumper
 from .pipjumper import PipJumper
 from .flatpakjumper import FlatpakJumper
 from .dockerjumper import DockerJumper
+from .linuxmintjumper import LinuxMintJumper
 
 jumpers = {
     PipJumper,
     FlatpakJumper,
     FlutterJumper,
     DockerJumper,
+    LinuxMintJumper,
 }
 
 def get_jumper_map():
